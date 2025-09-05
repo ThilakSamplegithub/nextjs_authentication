@@ -6,11 +6,11 @@ import bcrypt from "bcryptjs";
 connect();
 // Looking to send emails in production? Check out our Email API/SMTP product!
 var transporter = nodemailer.createTransport({
-  host: "sandbox.smtp.mailtrap.io",
-  port: 2525,
+  host: process.env.MAIL_HOST,
+  port: Number(process.env.PORT),
   auth: {
-    user: "01bb0d2fc403ab",
-    pass: "e01598d82e35cf",
+    user: process.env.MAIL_USER,
+    pass: process.env.MAIL_PASS,
   },
 });
 export const sendMail = async ({ email, userId, emailType }: any) => {
