@@ -1,5 +1,4 @@
 import { cookies } from "next/headers"
-import { NextRequest } from "next/server"
 import jwt from 'jsonwebtoken'
 export async function getDataFromToken() {
     try {

@@ -5,7 +5,7 @@ import bcrypt from "bcryptjs";
 
 connect();
 // Looking to send emails in production? Check out our Email API/SMTP product!
-var transporter = nodemailer.createTransport({
+let transporter = nodemailer.createTransport({
   host: process.env.MAIL_HOST,
   port: Number(process.env.PORT),
   auth: {
@@ -38,9 +38,9 @@ export const sendMail = async ({ email, userId, emailType }: any) => {
         }
       );
     }
-    let verifyEmailUrl = `${process.env.DOMAIN}verifyEmail?token=${hashToken}`;
-    let resetUrl = `${process.env.DOMAIN}resetUrl?token=${hashToken}`;
-    let htmlContent =
+    const verifyEmailUrl = `${process.env.DOMAIN}verifyEmail?token=${hashToken}`;
+    const resetUrl = `${process.env.DOMAIN}resetUrl?token=${hashToken}`;
+    const htmlContent =
       emailType === "VERIFY"
         ? `<p>Click <a href="${verifyEmailUrl}">here</a> or Copy and Paste link ${verifyEmailUrl} </p>`
         : `<p> Click <a href="${resetUrl}">Here</a> or copy and paste url ${resetUrl} </p>`;
